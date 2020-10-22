@@ -32,7 +32,8 @@ TEST(SharedPtr, Copy) {
 
 TEST(SharedPtr, move) {
   SharedPtr<std::string> ptr1(new std::string("hello"));
-  SharedPtr<std::string> ptr2 = new std::string("world");
+  SharedPtr<std::string> ptr2 =
+      SharedPtr<std::string>{new std::string("world")};
   EXPECT_EQ(*ptr1, "hello");
   EXPECT_EQ(ptr1.use_count(), 1);
   ptr1 = std::move(ptr2);
