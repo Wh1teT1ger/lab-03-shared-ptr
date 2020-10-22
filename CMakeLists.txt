@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.4)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(BUILD_COVERAGE "Build coverage" ON)
+option(BUILD_COVERAGE "Build coverage" OFF)
 
 set(
         HUNTER_CACHE_SERVERS
@@ -29,7 +29,6 @@ find_package(GTest CONFIG REQUIRED)
 
 
 add_library(lab-03-shared-ptr STATIC
-        # enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/SharedPtr.cpp
         )
 add_executable(tests
