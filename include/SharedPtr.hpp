@@ -1,7 +1,7 @@
 // Copyright 2020 Burylov Denis <burylov01@mail.ru>
 
-#ifndef INCLUDE_HEADER_HPP_
-#define INCLUDE_HEADER_HPP_
+#ifndef INCLUDE_SHAREDPTR_HPP_
+#define INCLUDE_SHAREDPTR_HPP_
 
 #include <atomic>
 #include <cstdio>
@@ -34,7 +34,7 @@ class SharedPtr {
 
  public:
   SharedPtr();
-  SharedPtr(T* ptr);
+  explicit SharedPtr(T* ptr);
   SharedPtr(const SharedPtr& r);
   SharedPtr(SharedPtr&& r) noexcept;
   ~SharedPtr();
@@ -147,4 +147,4 @@ auto SharedPtr<T>::use_count() const -> size_t {
   return control_block->get();
 }
 
-#endif  // INCLUDE_HEADER_HPP_
+#endif  // INCLUDE_SHAREDPTR_HPP_
