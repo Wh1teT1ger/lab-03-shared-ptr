@@ -76,8 +76,6 @@ SharedPtr<T>::~SharedPtr() {
   if (control_block != nullptr && control_block->decrement() == 0) {
     delete data;
     delete control_block;
-    data = nullptr;
-    control_block = nullptr;
   }
 }
 
