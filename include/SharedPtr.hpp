@@ -11,7 +11,7 @@ template <typename T>
 class SharedPtr {
   T* data;
   class ControlBlock {
-    std::atomic_int counter;
+    size_t counter;
 
    public:
     ControlBlock() : counter(0) {}
@@ -29,8 +29,7 @@ class SharedPtr {
     }
 
     int get() { return counter; }
-  };
-  ControlBlock* control_block;
+  } * control_block;
 
  public:
   SharedPtr();
@@ -96,7 +95,7 @@ auto SharedPtr<T>::operator=(const SharedPtr&& r) noexcept -> SharedPtr& {
 
 template <typename T>
 SharedPtr<T>::operator bool() const {
-  return data!= nullptr;
+  return data != nullptr;
 }
 
 template <typename T>
