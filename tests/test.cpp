@@ -31,13 +31,13 @@ TEST(SharedPtr, Copy) {
 }
 
 TEST(SharedPtr, move) {
-  SharedPtr<std::string> ptr1(new std::string("hello"));
-  SharedPtr<std::string> ptr2 =
-      SharedPtr<std::string>{new std::string("world")};
-  EXPECT_EQ(*ptr1, "hello");
+  SharedPtr<int> ptr1(new int(123));
+  SharedPtr<int> ptr2 =
+      SharedPtr<int>{new int(456)};
+  EXPECT_EQ(*ptr1, 123);
   EXPECT_EQ(ptr1.use_count(), 1);
   ptr1 = std::move(ptr2);
-  EXPECT_EQ(*ptr1, "world");
+  EXPECT_EQ(*ptr1, 456);
   EXPECT_EQ(ptr1.use_count(), 1);
 }
 
