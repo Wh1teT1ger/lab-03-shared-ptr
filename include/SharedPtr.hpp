@@ -36,7 +36,7 @@ class SharedPtr {
   SharedPtr(SharedPtr&& r) noexcept;
   ~SharedPtr();
   auto operator=(const SharedPtr& r) -> SharedPtr&;
-  auto operator=(const SharedPtr&& r) noexcept -> SharedPtr&;
+  auto operator=(SharedPtr&& r) noexcept -> SharedPtr&;
   operator bool() const;
   auto operator*() const -> T&;
   auto operator->() const -> T*;
@@ -87,7 +87,7 @@ auto SharedPtr<T>::operator=(const SharedPtr& r) -> SharedPtr& {
 }
 
 template <typename T>
-auto SharedPtr<T>::operator=(const SharedPtr&& r) noexcept -> SharedPtr& {
+auto SharedPtr<T>::operator=(SharedPtr&& r) noexcept -> SharedPtr& {
   std::swap(data, r.data);
   std::swap(control_block, r.control_block);
   return *this;
