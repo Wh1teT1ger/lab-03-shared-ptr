@@ -88,8 +88,8 @@ auto SharedPtr<T>::operator=(const SharedPtr& r) -> SharedPtr& {
 
 template <typename T>
 auto SharedPtr<T>::operator=(const SharedPtr&& r) noexcept -> SharedPtr& {
-  data = std::move(r.data);
-  control_block = std::move(r.control_block);
+  std::swap(data, r.data);
+  std::swap(control_block, r.control_block);
   return *this;
 }
 
