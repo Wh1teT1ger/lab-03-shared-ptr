@@ -59,7 +59,7 @@ if (BUILD_COVERAGE)
     endfunction()
 
     set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
-    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tools/CMake-codecov/cmake")
+    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
     find_package(codecov)
     enable_project_coverage(lab-03-shared-ptr)
     enable_project_coverage(tests)
