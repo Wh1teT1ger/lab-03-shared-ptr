@@ -16,8 +16,6 @@ class SharedPtr {
    public:
     ControlBlock() : counter(0) {}
 
-    ~ControlBlock() = default;
-
     int increment() {
       ++counter;
       return counter;
@@ -72,9 +70,11 @@ SharedPtr<T>::SharedPtr(SharedPtr&& r) noexcept
 
 template <typename T>
 SharedPtr<T>::~SharedPtr() {
-  if (control_block != nullptr && control_block->decrement() == 0) {
-    delete data;
-    delete control_block;
+  if (control_block != nullptr) {
+    if (!control_block->decrement()) {
+      delete data;
+      delete control_block;
+    }
   }
 }
 
